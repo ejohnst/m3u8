@@ -523,6 +523,10 @@ func (p *MediaPlaylist) Encode() *bytes.Buffer {
 			p.buf.WriteRune('\n')
 		}
 	}
+	for _, s := range p.Extra {
+		p.buf.WriteString(s)
+		p.buf.WriteRune('\n')
+	}
 
 	var (
 		seg           *MediaSegment

@@ -114,6 +114,7 @@ func (p *MediaPlaylist) decode(buf *bytes.Buffer, strict bool) error {
 	if state.tagWV {
 		p.WV = wv
 	}
+	p.Extra = state.xextra
 	if strict && !state.m3u {
 		return errors.New("#EXTM3U absent")
 	}
@@ -717,6 +718,7 @@ func decodeLineOfMediaPlaylist(p *MediaPlaylist, wv *WV, state *decodingState, l
 			state.tagWV = true
 		}
 	case strings.HasPrefix(line, "#"): // unknown tags treated as comments
+		state.xextra = append(state.xextra, line)
 		return err
 	}
 	return err
