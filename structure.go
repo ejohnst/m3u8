@@ -154,6 +154,7 @@ type MasterPlaylist struct {
 	independentSegments bool
 	Custom              map[string]CustomTag
 	customDecoders      []CustomDecoder
+	Alternatives        []*Alternative
 }
 
 // Variant structure represents variants for master playlist.

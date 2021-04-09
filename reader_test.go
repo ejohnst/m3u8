@@ -84,6 +84,9 @@ func TestDecodeMasterPlaylistWithAlternatives(t *testing.T) {
 	if len(p.Variants) != 4 {
 		t.Fatal("not all variants in master playlist parsed")
 	}
+	if len(p.Alternatives) != 9 {
+		t.Fatalf("not all alternatives in master playlist parsed (%v != 9)", len(p.Alternatives))
+	}
 	// TODO check other values
 	for i, v := range p.Variants {
 		if i == 0 && len(v.Alternatives) != 3 {
